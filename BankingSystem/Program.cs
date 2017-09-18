@@ -47,7 +47,7 @@ namespace BankingSystem
             }
         }
 
-        public static void CreateCustomers()
+        public static void CreateCustomer()
         {
             Console.Clear();
             Console.WriteLine("----------- Tilføj ny kunde -----------");
@@ -55,7 +55,7 @@ namespace BankingSystem
             string firstName = Console.ReadLine();
             Console.Write("Indtast dit efternavn: ");
             string lastName = Console.ReadLine();
-            Console.Write("Indtast dit telefonnr. :");
+            Console.Write("Indtast dit telefonnr.: ");
             string phone = Console.ReadLine();
             Console.Write("Indtast din e-mail: ");
             string email = Console.ReadLine();
