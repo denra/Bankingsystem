@@ -10,10 +10,10 @@ namespace BankingSystem
     {
         static void Main(string[] args)
         {
-            mainMenu();
+            MainMenu();
         }
 
-        public static void mainMenu()
+        public static void MainMenu()
         {
             Console.Clear();
             Console.WriteLine("-------------------");
@@ -24,6 +24,26 @@ namespace BankingSystem
             Console.WriteLine("4. Redigere kunde.");
             Console.WriteLine("5. Overfør penge");
             Console.WriteLine("--------------------");
+            string command = Console.ReadLine();
+            switch(command)
+            {
+                case "1":
+                    CreateCustomer();
+                    break;
+                case "2":
+                    FindCustomer();
+                    break;
+                case "3":
+                    DeleteCustomer();
+                    break;
+                case "4":
+                    EditCustomer();
+                    break;
+                case "5":
+                    TransferMoney();
+                    break;
+
+            }
         }
     }
 }
