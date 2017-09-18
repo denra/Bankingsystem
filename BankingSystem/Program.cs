@@ -26,7 +26,7 @@ namespace BankingSystem
             Console.WriteLine("5. Overfør penge");
             Console.WriteLine("--------------------");
             string command = Console.ReadLine();
-            switch(command)
+            switch (command)
             {
                 case "1":
                     CreateCustomer();
@@ -38,10 +38,10 @@ namespace BankingSystem
                     DeleteCustomer();
                     break;
                 case "4":
-                    EditCustomer();
+                    EditCustomer(); //Camilla
                     break;
                 case "5":
-                    TransferMoney();
+                    TransferMoney(); // Camilla
                     break;
 
             }
@@ -61,7 +61,9 @@ namespace BankingSystem
             string email = Console.ReadLine();
             Console.Write("Hvor mange penge vil du indsætte på din nye konto? ");
             string account = Console.ReadLine();
-            Customer customer = new Customer(1, firstName, lastName, phone, email, decimal.Parse(account));
+            int nextCustomer = 1;
+            Customer customer = new Customer(nextCustomer, firstName, lastName, phone, email, decimal.Parse(account));
+            nextCustomer++;
             Bank.AddCustomers.Add(customer);
             MainMenu();
         }
