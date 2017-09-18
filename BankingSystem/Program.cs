@@ -47,7 +47,7 @@ namespace BankingSystem
             }
         }
 
-        public static void CreateCustomers()
+        public static void CreateCustomer()
         {
             Console.Clear();
             Console.WriteLine("----------- Tilføj ny kunde -----------");
