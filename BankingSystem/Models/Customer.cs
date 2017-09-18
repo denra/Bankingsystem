@@ -20,9 +20,9 @@ namespace BankingSystem.Models
         private string country;
         private string city;
 
-        private string account;
+        private decimal account;
 
-        public Customer(int newId, string newFirstName, string newLastName, string newPhoneNumber, string newEmail, string newAccount)
+        public Customer(int newId, string newFirstName, string newLastName, string newPhoneNumber, string newEmail, decimal newAccount)
         {
             id = newId;
             firstName = newFirstName;
@@ -134,7 +134,7 @@ namespace BankingSystem.Models
                 country = value;
             }
         }
-        public string Account
+        public decimal Account
         {
             get
             {

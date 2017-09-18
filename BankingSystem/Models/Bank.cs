@@ -13,12 +13,11 @@ namespace BankingSystem.Models
         private int zipcode;
         private string city;
 
-        private List<Customer> customers;
+        private static List<Customer> customers = new List<Customer>();
 
         public Bank(string newName)
         {
             name = newName;
-            customers = new List<Customer>();
         }
 
         public string Name
@@ -62,5 +61,12 @@ namespace BankingSystem.Models
             }
         }
 
+        public static List<Customer> AddCustomers
+        {
+            get
+            {
+                return customers;
+            }
+        }
     }
 }
