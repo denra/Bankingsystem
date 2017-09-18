@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace BankingSystem.Models
 {
-    class Account
+    public class Account
     {
-        private int id;
+        public int Id { get; }
+        public string AccountNumber { get; set; }
+        public int Balance { get; set; }
     }
 }
