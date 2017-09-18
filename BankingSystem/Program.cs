@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankingSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace BankingSystem
             Console.WriteLine("4. Redigere kunde.");
             Console.WriteLine("5. Overfør penge");
             Console.WriteLine("--------------------");
+<<<<<<< HEAD
             string command = Console.ReadLine();
             switch(command)
             {
@@ -44,6 +46,28 @@ namespace BankingSystem
                     break;
 
             }
+=======
+            Console.ReadLine();
+        }
+
+        public static void CreateCustomers()
+        {
+            Console.Clear();
+            Console.WriteLine("----------- Tilføj ny kunde -----------");
+            Console.Write("Indtast dit fornavn: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Indtast dit efternavn: ");
+            string lastName = Console.ReadLine();
+            Console.Write("Indtast dit telefonnr. :");
+            string phone = Console.ReadLine();
+            Console.Write("Indtast din e-mail: ");
+            string email = Console.ReadLine();
+            Console.Write("Hvor mange penge vil du indsætte på din nye konto? ");
+            string account = Console.ReadLine();
+            Customer customer = new Customer(1, firstName, lastName, phone, email, decimal.Parse(account));
+            Bank.AddCustomers.Add(customer);
+            MainMenu();
+>>>>>>> 67559bb769d1d8fde8cfded924fe9355bc6cf283
         }
     }
 }
