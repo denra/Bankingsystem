@@ -13,6 +13,14 @@ namespace BankingSystem.Models
         private int zipcode;
         private string city;
 
+        private List<Customer> customers;
+
+        public Bank(string newName)
+        {
+            name = newName;
+            customers = new List<Customer>();
+        }
+
         public string Name
         {
             get

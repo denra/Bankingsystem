@@ -19,9 +19,17 @@ namespace BankingSystem.Models
         //kunne måske fjerne
         private string country;
         private string city;
-        public Customer(int newId)
+
+        private string account;
+
+        public Customer(int newId, string newFirstName, string newLastName, string newPhoneNumber, string newEmail, string newAccount)
         {
             id = newId;
+            firstName = newFirstName;
+            lastName = newLastName;
+            phoneNumber = newPhoneNumber;
+            email = newEmail;
+            account = newAccount;
         }
 
         public int Id
@@ -124,6 +132,17 @@ namespace BankingSystem.Models
             set
             {
                 country = value;
+            }
+        }
+        public string Account
+        {
+            get
+            {
+                return account;
+            }
+            set
+            {
+                account = value;
             }
         }
     }
