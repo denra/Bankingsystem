@@ -32,10 +32,10 @@ namespace BankingSystem
                     CreateCustomer();
                     break;
                 case "2":
-                    FindCustomer();
+                    FindCustomer(); //Dennis
                     break;
                 case "3":
-                    DeleteCustomer();
+                    DeleteCustomer(); //Dennis
                     break;
                 case "4":
                     EditCustomer(); //Camilla
@@ -65,6 +65,12 @@ namespace BankingSystem
             Customer customer = new Customer(nextCustomer, firstName, lastName, phone, email, decimal.Parse(account));
             nextCustomer++;
             Bank.AddCustomers.Add(customer);
+            MainMenu();
+        }
+
+        public static void DeleteCustomer()
+        {
+
             MainMenu();
         }
     }
