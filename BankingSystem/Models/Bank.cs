@@ -61,7 +61,7 @@ namespace BankingSystem.Models
             }
         }
 
-        public static List<Customer> AddCustomers
+        public static List<Customer> GetCustomers
         {
             get
             {
