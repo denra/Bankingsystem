@@ -25,7 +25,6 @@ namespace BankingSystem
             Console.WriteLine("4. Redigere kunde.");
             Console.WriteLine("5. Overfør penge");
             Console.WriteLine("--------------------");
-<<<<<<< HEAD
             string command = Console.ReadLine();
             switch(command)
             {
@@ -46,8 +45,6 @@ namespace BankingSystem
                     break;
 
             }
-=======
-            Console.ReadLine();
         }
 
         public static void CreateCustomers()
@@ -67,7 +64,6 @@ namespace BankingSystem
             Customer customer = new Customer(1, firstName, lastName, phone, email, decimal.Parse(account));
             Bank.AddCustomers.Add(customer);
             MainMenu();
->>>>>>> 67559bb769d1d8fde8cfded924fe9355bc6cf283
         }
     }
 }
