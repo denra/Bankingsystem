@@ -17,8 +17,8 @@ namespace BankingSystem
         public static void MainMenu()
         {
             Console.Clear();
-            Console.WriteLine("-------------------");
             Console.WriteLine("Velkommen til banken");
+            Console.WriteLine("--------------------");
             Console.WriteLine("1. Tilføj ny kunde.");
             Console.WriteLine("2. Find Kunde og konto.");
             Console.WriteLine("3. Fjern kunde.");
@@ -68,10 +68,17 @@ namespace BankingSystem
             MainMenu();
         }
 
+        public static void FindCustomer()
+        {
+            Console.WriteLine("Find kunde.");
+            Console.WriteLine("--------------------");
+            MainMenu();
+        }
         public static void DeleteCustomer()
         {
 
             MainMenu();
         }
+
     }
 }
