@@ -82,7 +82,10 @@ namespace BankingSystem
                 {
                     if(email == myCustomer.Email)
                     {
-                        Console.WriteLine("ID: " + myCustomer.Id + " Fornavn: " + myCustomer.FirstName + " Efternavn: " + myCustomer.LastName + " Telefonnr.: " + myCustomer.PhoneNumber + " Email: " + myCustomer.Email + " Balance på konto: " + myCustomer.Account);
+                        Console.WriteLine("ID: " + myCustomer.Id + " Navn: " + myCustomer.FirstName + " " + myCustomer.LastName + " Telefonnr.: " + myCustomer.PhoneNumber + " Email: " + myCustomer.Email + " Balance på konto: " + myCustomer.Account);
+                        Console.WriteLine("Tryk enter til at komme tilbage til hovedmenuen.");
+                        Console.ReadLine();
+                        MainMenu();
                     }
                     else
                     {
@@ -113,6 +116,9 @@ namespace BankingSystem
                     if (email == myCustomer.Email)
                     {
                         Bank.GetCustomers.Remove(myCustomer);
+                        Console.WriteLine("Kunden er nu fjernet. Tryk enter for at vende tilbage til hovedmenuen.");
+                        Console.ReadLine();
+                        MainMenu();
                     }
                     else
                     {
