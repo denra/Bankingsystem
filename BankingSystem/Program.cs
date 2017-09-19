@@ -92,13 +92,14 @@ namespace BankingSystem
                         Console.ReadLine();
                         MainMenu();
                     }
-                    else
+                    else if(email != myCustomer.Email)
                     {
-                        Console.WriteLine("Der findes ingen kunder med denne e-mail. Prøv igen.");
-                        Console.ReadLine();
-                        MainMenu();
+                        continue;
                     }
                 }
+                Console.WriteLine("Der findes ingen kunder med denne e-mail. Prøv igen.");
+                Console.ReadLine();
+                MainMenu();
             }
             else
             {
@@ -130,13 +131,14 @@ namespace BankingSystem
                             break;
                         }
                     }
-                    else
+                    else if(email != myCustomer.Email)
                     {
-                        Console.WriteLine("Der findes ingen kunder med denne e-mail. Prøv igen.");
-                        Console.ReadLine();
-                        MainMenu();
+                        continue;
                     }
+                    Console.WriteLine("Der findes ingen kunder med denne e-mail. Prøv igen.");
+                    Console.ReadLine();
                 }
+                MainMenu();
             }
             else
             {
