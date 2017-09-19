@@ -118,7 +118,7 @@ namespace BankingSystem
                         Bank.GetCustomers.Remove(myCustomer);
                         Console.WriteLine("Kunden er nu fjernet. Tryk enter for at vende tilbage til hovedmenuen.");
                         Console.ReadLine();
-                        MainMenu();
+                        break;
                     }
                     else
                     {
