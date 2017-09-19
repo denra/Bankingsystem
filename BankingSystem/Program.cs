@@ -62,8 +62,13 @@ namespace BankingSystem
             Console.Write("Hvor mange penge vil du indsætte på din nye konto? ");
             string account = Console.ReadLine();
             int nextCustomer = 1;
+
+            foreach(Customer myCustomer in Bank.GetCustomers)
+            {
+                nextCustomer++;
+            }
+
             Customer customer = new Customer(nextCustomer, firstName, lastName, phone, email, decimal.Parse(account));
-            nextCustomer++;
             Bank.GetCustomers.Add(customer);
             Console.WriteLine("Du er nu oprettet som kunde. Tryk på enter for at vende tilbage til menuen.");
             Console.ReadLine();
