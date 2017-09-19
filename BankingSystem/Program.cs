@@ -111,14 +111,19 @@ namespace BankingSystem
             string email = Console.ReadLine();
             if (Bank.GetCustomers.Count > 0)
             {
+                int i = Bank.GetCustomers.Count;
                 foreach (Customer myCustomer in Bank.GetCustomers)
                 {
                     if (email == myCustomer.Email)
                     {
                         Bank.GetCustomers.Remove(myCustomer);
-                        Console.WriteLine("Kunden er nu fjernet. Tryk enter for at vende tilbage til hovedmenuen.");
-                        Console.ReadLine();
-                        break;
+
+                        if (i == Bank.GetCustomers.Count + 1)
+                        { 
+                            Console.WriteLine("Kunden er nu fjernet. Tryk enter for at vende tilbage til hovedmenuen.");
+                            Console.ReadLine();
+                            break;
+                        }
                     }
                     else
                     {
