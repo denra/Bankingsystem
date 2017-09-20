@@ -32,16 +32,16 @@ namespace BankingSystem
                     CreateCustomer();
                     break;
                 case "2":
-                    FindCustomer();  //Dennis
+                    FindCustomer();
                     break;
                 case "3":
-                    DeleteCustomer(); //Dennis
+                    DeleteCustomer();
                     break;
                 case "4":
-                    EditCustomer(); //Camilla
+                    EditCustomer();
                     break;
                 case "5":
-                    TransferMoney(); // Camilla
+                    TransferMoney();
                     break;
             }
         }
@@ -78,25 +78,10 @@ namespace BankingSystem
         {
             Console.Clear();
             Console.WriteLine("----------- Find kunde -----------");
-            Console.Write("indtast kundens email: ");
+            Console.Write("Indtast kundens email: ");
             string email = Console.ReadLine();
             if (Bank.GetCustomers.Count > 0)
             {
-<<<<<<< HEAD
-                foreach (Customer myCustomer in Bank.GetCustomers)
-                {
-                    if (email == myCustomer.Email)
-                    {
-                        Console.WriteLine("ID: " + myCustomer.Id + " Navn: " + myCustomer.FullName + " Telefonnr.: " + myCustomer.PhoneNumber + " Email: " + myCustomer.Email + " Balance på konto: " + myCustomer.Account);
-                        Console.WriteLine("Tryk enter til at komme tilbage til hovedmenuen.");
-                        Console.ReadLine();
-                        MainMenu();
-                    }
-                    else if (email != myCustomer.Email)
-                    {
-                        continue;
-                    }
-=======
                 Customer myFoundCustomer = Bank.FindCustomer(email);
                 if (myFoundCustomer != null)
                 {
@@ -104,14 +89,13 @@ namespace BankingSystem
                     Console.WriteLine("Tryk enter til at komme tilbage til hovedmenuen.");
                     Console.ReadLine();
                     MainMenu();
->>>>>>> 86e9a9701c284231e9dea1d1972c5bdcbb5f81d5
                 }
                 else
                 {
                     Console.WriteLine("Der findes ingen kunder med denne e-mail. Prøv igen.");
                     Console.ReadLine();
                     MainMenu();
-                }               
+                }
             }
             else
             {
@@ -120,25 +104,6 @@ namespace BankingSystem
                 MainMenu();
             }
         }
-<<<<<<< HEAD
-
-        public static void Find()
-        {
-            Console.Clear();
-            Console.WriteLine("----------- Find kunde -----------");
-            Console.Write("indtast kundens email: ");
-            string email = Console.ReadLine();
-            if (Bank.GetCustomers.Count > 0)
-            {
-                Customer myFoundCustomer = Bank.FindCustomer(email);
-                Console.WriteLine("ID: " + myFoundCustomer.Id + " Navn: " + myFoundCustomer.FullName + " Telefonnr.: " + myFoundCustomer.PhoneNumber + " Email: " + myFoundCustomer.Email + " Balance på konto: " + myFoundCustomer.Account);
-                Console.WriteLine("Tryk enter til at komme tilbage til hovedmenuen.");
-                Console.ReadLine();
-                MainMenu();
-            }
-        }
-=======
->>>>>>> 86e9a9701c284231e9dea1d1972c5bdcbb5f81d5
 
         public static void DeleteCustomer()
         {
@@ -155,23 +120,8 @@ namespace BankingSystem
                     Bank.GetCustomers.Remove(myFoundCustomer);
                     if (i == Bank.GetCustomers.Count + 1)
                     {
-<<<<<<< HEAD
-                        Bank.GetCustomers.Remove(myCustomer);
-
-                        if (i == Bank.GetCustomers.Count + 1)
-                        {
-                            Console.WriteLine("Kunden er nu fjernet. Tryk enter for at vende tilbage til hovedmenuen.");
-                            Console.ReadLine();
-                            break;
-                        }
-                    }
-                    else if (email != myCustomer.Email)
-                    {
-                        continue;
-=======
                         Console.WriteLine("Kunden er nu fjernet. Tryk enter for at vende tilbage til hovedmenuen.");
                         Console.ReadLine();
->>>>>>> 86e9a9701c284231e9dea1d1972c5bdcbb5f81d5
                     }
                 }
                 else
@@ -179,7 +129,7 @@ namespace BankingSystem
                     Console.WriteLine("Der findes ingen kunder med denne e-mail. Prøv igen.");
                     Console.ReadLine();
                     MainMenu();
-                }          
+                }
             }
             else
             {
