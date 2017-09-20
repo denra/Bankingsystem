@@ -68,6 +68,7 @@ namespace BankingSystem.Models
                 return customers;
             }
         }
+
         public static Customer FindCustomer(string mail)
         {
             if (Bank.GetCustomers.Count > 0)

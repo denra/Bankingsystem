@@ -65,7 +65,7 @@ namespace BankingSystem
             string account = Console.ReadLine();
             int nextCustomer = 1;
 
-            foreach(Customer myCustomer in Bank.GetCustomers)
+            foreach (Customer myCustomer in Bank.GetCustomers)
             {
                 nextCustomer++;
             }
@@ -85,16 +85,16 @@ namespace BankingSystem
             string email = Console.ReadLine();
             if (Bank.GetCustomers.Count > 0)
             {
-                foreach(Customer myCustomer in Bank.GetCustomers)
+                foreach (Customer myCustomer in Bank.GetCustomers)
                 {
-                    if(email == myCustomer.Email)
+                    if (email == myCustomer.Email)
                     {
                         Console.WriteLine("ID: " + myCustomer.Id + " Navn: " + myCustomer.FullName + " Telefonnr.: " + myCustomer.PhoneNumber + " Email: " + myCustomer.Email + " Balance på konto: " + myCustomer.Account);
                         Console.WriteLine("Tryk enter til at komme tilbage til hovedmenuen.");
                         Console.ReadLine();
                         MainMenu();
                     }
-                    else if(email != myCustomer.Email)
+                    else if (email != myCustomer.Email)
                     {
                         continue;
                     }
@@ -110,6 +110,7 @@ namespace BankingSystem
                 MainMenu();
             }
         }
+
         public static void Find()
         {
             Console.Clear();
@@ -142,13 +143,13 @@ namespace BankingSystem
                         Bank.GetCustomers.Remove(myCustomer);
 
                         if (i == Bank.GetCustomers.Count + 1)
-                        { 
+                        {
                             Console.WriteLine("Kunden er nu fjernet. Tryk enter for at vende tilbage til hovedmenuen.");
                             Console.ReadLine();
                             break;
                         }
                     }
-                    else if(email != myCustomer.Email)
+                    else if (email != myCustomer.Email)
                     {
                         continue;
                     }
@@ -223,11 +224,11 @@ namespace BankingSystem
             string email = Console.ReadLine();
             int id = 0;
 
-            if (Bank.GetCustomers.Count > 0)
+            if (Bank.GetCustomers.Count > 1)
             {
                 foreach (Customer myCustomer in Bank.GetCustomers)
                 {
-                    if (email == myCustomer.Email)
+                    if (Bank.FindCustomer(email) != null)
                     {
                         id = myCustomer.Id;
 
@@ -235,13 +236,24 @@ namespace BankingSystem
                         {
                             Console.Clear();
                             Console.WriteLine("----------- Overfør penge -----------");
+                            Console.Write("Skriv e-mail adressen til den kunde, du vil overføre penge til: ");
+                            string customerEmail = Console.ReadLine();
+
+                            Customer otherCustomer = Bank.FindCustomer(customerEmail);
+
                             Console.Write("Hvor mange penge vil du overføre? ");
-                            decimal money = decimal.Parse(Console.ReadLine());
-                            if (myCustomer.Account > money)
+                            decimal moneyToAccount = decimal.Parse(Console.ReadLine());
+                            if (myCustomer.Account >= moneyToAccount)
                             {
-                                decimal allMoney = myCustomer.Account + money;
-                                myCustomer.Account = allMoney;
-                                Console.WriteLine("Du har nu i alt " + allMoney + "kr. på din konto.");
+                                decimal allMyMoney = myCustomer.Account - moneyToAccount;
+                                decimal allMoney = otherCustomer.Account + moneyToAccount;
+
+                                otherCustomer.Account = allMoney;
+                                myCustomer.Account = allMyMoney;
+
+                                Console.WriteLine("");
+                                Console.WriteLine("På kontoen tilknyttet " + myCustomer.Email + " er der nu " + allMyMoney + "kr.");
+                                Console.WriteLine("På kontoen tilknyttet " + otherCustomer.Email + " er der nu " + allMoney + "kr.");
                                 Console.WriteLine("");
                                 Console.WriteLine("Tryk på enter for at vende tilbage til menuen.");
                                 Console.ReadLine();
@@ -249,20 +261,22 @@ namespace BankingSystem
                             }
                             else
                             {
-                                Console.WriteLine("Der er ikke nok penge i kontoen.");
+                                Console.WriteLine("Der er ikke nok penge på kontoen.");
                                 Console.WriteLine("Tryk på enter for at vende tilbage til menuen.");
                                 Console.ReadLine();
                                 MainMenu();
                             }
-                            
+
+                            break;
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("Der findes ingen kunder med denne e-mail. Prøv igen.");
-                        Console.ReadLine();
-                        MainMenu();
-                    }
+                }
+
+                if (Bank.FindCustomer(email) == null)
+                {
+                    Console.WriteLine("Der findes ingen kunder med denne e-mail. Prøv igen.");
+                    Console.ReadLine();
+                    MainMenu();
                 }
             }
             else
