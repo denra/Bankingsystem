@@ -68,5 +68,20 @@ namespace BankingSystem.Models
                 return customers;
             }
         }
+        public static Customer FindCustomer(string mail)
+        {
+            if (Bank.GetCustomers.Count > 0)
+            {
+                foreach (Customer myCustomer in customers)
+                {
+                    if (myCustomer.Email == mail)
+                    {
+                        return myCustomer;
+                    }
+                }
+                return null;
+            }
+            return null;
+        }
     }
 }

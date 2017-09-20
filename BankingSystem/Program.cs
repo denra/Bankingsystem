@@ -43,7 +43,9 @@ namespace BankingSystem
                 case "5":
                     TransferMoney(); // Camilla
                     break;
-
+                case "6":
+                    Find();
+                    break;
             }
         }
 
@@ -87,7 +89,7 @@ namespace BankingSystem
                 {
                     if(email == myCustomer.Email)
                     {
-                        Console.WriteLine("ID: " + myCustomer.Id + " Navn: " + myCustomer.FirstName + " " + myCustomer.LastName + " Telefonnr.: " + myCustomer.PhoneNumber + " Email: " + myCustomer.Email + " Balance på konto: " + myCustomer.Account);
+                        Console.WriteLine("ID: " + myCustomer.Id + " Navn: " + myCustomer.FullName + " Telefonnr.: " + myCustomer.PhoneNumber + " Email: " + myCustomer.Email + " Balance på konto: " + myCustomer.Account);
                         Console.WriteLine("Tryk enter til at komme tilbage til hovedmenuen.");
                         Console.ReadLine();
                         MainMenu();
@@ -104,6 +106,21 @@ namespace BankingSystem
             else
             {
                 Console.WriteLine("Der er endnu ikke oprettet kunder i systemet. Start med at oprette dig som kunde.");
+                Console.ReadLine();
+                MainMenu();
+            }
+        }
+        public static void Find()
+        {
+            Console.Clear();
+            Console.WriteLine("----------- Find kunde -----------");
+            Console.Write("indtast kundens email: ");
+            string email = Console.ReadLine();
+            if (Bank.GetCustomers.Count > 0)
+            {
+                Customer myFoundCustomer = Bank.FindCustomer(email);
+                Console.WriteLine("ID: " + myFoundCustomer.Id + " Navn: " + myFoundCustomer.FullName + " Telefonnr.: " + myFoundCustomer.PhoneNumber + " Email: " + myFoundCustomer.Email + " Balance på konto: " + myFoundCustomer.Account);
+                Console.WriteLine("Tryk enter til at komme tilbage til hovedmenuen.");
                 Console.ReadLine();
                 MainMenu();
             }
@@ -220,13 +237,24 @@ namespace BankingSystem
                             Console.WriteLine("----------- Overfør penge -----------");
                             Console.Write("Hvor mange penge vil du overføre? ");
                             decimal money = decimal.Parse(Console.ReadLine());
-                            decimal allMoney = myCustomer.Account + money;
-                            myCustomer.Account = allMoney;
-                            Console.WriteLine("Du har nu i alt " + allMoney + "kr. på din konto.");
-                            Console.WriteLine("");
-                            Console.WriteLine("Tryk på enter for at vende tilbage til menuen.");
-                            Console.ReadLine();
-                            MainMenu();
+                            if (myCustomer.Account > money)
+                            {
+                                decimal allMoney = myCustomer.Account + money;
+                                myCustomer.Account = allMoney;
+                                Console.WriteLine("Du har nu i alt " + allMoney + "kr. på din konto.");
+                                Console.WriteLine("");
+                                Console.WriteLine("Tryk på enter for at vende tilbage til menuen.");
+                                Console.ReadLine();
+                                MainMenu();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Der er ikke nok penge i kontoen.");
+                                Console.WriteLine("Tryk på enter for at vende tilbage til menuen.");
+                                Console.ReadLine();
+                                MainMenu();
+                            }
+                            
                         }
                     }
                     else
