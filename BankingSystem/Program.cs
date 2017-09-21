@@ -243,10 +243,8 @@ namespace BankingSystem
                             }
                         }
                     }
-
                     break;
                 }
-
                 if (Bank.FindCustomer(email) == null)
                 {
                     Console.WriteLine("Der findes ingen kunder med denne e-mail. Prøv igen.");
