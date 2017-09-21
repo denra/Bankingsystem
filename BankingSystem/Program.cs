@@ -43,6 +43,9 @@ namespace BankingSystem
                 case "5":
                     TransferMoney();
                     break;
+                default:
+                    MainMenu();
+                    break;
             }
         }
 
@@ -146,7 +149,6 @@ namespace BankingSystem
             Console.WriteLine("----------- Rediger kunde -----------");
             Console.Write("Indtast din e-mail: ");
             string email = Console.ReadLine();
-            int id = 0;
 
             if (Bank.GetCustomers.Count > 0)
             {
@@ -154,24 +156,19 @@ namespace BankingSystem
                 {
                     if (email == myCustomer.Email)
                     {
-                        id = myCustomer.Id;
-
-                        if (id == myCustomer.Id)
-                        {
-                            Console.Clear();
-                            Console.WriteLine("---------- - Rediger kunde---------- - ");
-                            Console.Write("Rediger dit fornavn (nuværende : " + myCustomer.FirstName + " : ");
-                            myCustomer.FirstName = Console.ReadLine();
-                            Console.Write("Rediger dit efternavn (nuværende : " + myCustomer.LastName + " : ");
-                            myCustomer.LastName = Console.ReadLine();
-                            Console.Write("Rediger dit telefonnr. (nuværende : " + myCustomer.PhoneNumber + " : ");
-                            myCustomer.PhoneNumber = Console.ReadLine();
-                            Console.Write("Rediger din e-mail (nuværende : " + myCustomer.Email + " : ");
-                            myCustomer.Email = Console.ReadLine();
-                            Console.WriteLine("Du har nu redigeret dine informationer. Tryk på enter for at vende tilbage til menuen.");
-                            Console.ReadLine();
-                            MainMenu();
-                        }
+                        Console.Clear();
+                        Console.WriteLine("---------- - Rediger kunde---------- - ");
+                        Console.Write("Rediger dit fornavn (nuværende : " + myCustomer.FirstName + " : ");
+                        myCustomer.FirstName = Console.ReadLine();
+                        Console.Write("Rediger dit efternavn (nuværende : " + myCustomer.LastName + " : ");
+                        myCustomer.LastName = Console.ReadLine();
+                        Console.Write("Rediger dit telefonnr. (nuværende : " + myCustomer.PhoneNumber + " : ");
+                        myCustomer.PhoneNumber = Console.ReadLine();
+                        Console.Write("Rediger din e-mail (nuværende : " + myCustomer.Email + " : ");
+                        myCustomer.Email = Console.ReadLine();
+                        Console.WriteLine("Du har nu redigeret dine informationer. Tryk på enter for at vende tilbage til menuen.");
+                        Console.ReadLine();
+                        MainMenu();
                     }
                     else
                     {
@@ -195,7 +192,6 @@ namespace BankingSystem
             Console.WriteLine("----------- Overfør penge -----------");
             Console.Write("Indtast din e-mail: ");
             string email = Console.ReadLine();
-            int id = 0;
 
             if (Bank.GetCustomers.Count > 1)
             {
@@ -203,15 +199,21 @@ namespace BankingSystem
                 {
                     if (Bank.FindCustomer(email) != null)
                     {
-                        id = myCustomer.Id;
+                        Console.Clear();
+                        Console.WriteLine("----------- Overfør penge -----------");
+                        Console.Write("Skriv e-mail adressen til den kunde, du vil overføre penge til: ");
+                        string customerEmail = Console.ReadLine();
 
-                        if (id == myCustomer.Id)
+                        if (Bank.FindCustomer(customerEmail) == null)
                         {
                             Console.Clear();
-                            Console.WriteLine("----------- Overfør penge -----------");
-                            Console.Write("Skriv e-mail adressen til den kunde, du vil overføre penge til: ");
-                            string customerEmail = Console.ReadLine();
-
+                            Console.WriteLine("Der findes ingen kunder med denne e-mail. Prøv igen.");
+                            Console.WriteLine("Tryk på enter for at vende tilbage til menuen.");
+                            Console.ReadLine();
+                            MainMenu();
+                        }
+                        else
+                        {
                             Customer otherCustomer = Bank.FindCustomer(customerEmail);
 
                             Console.Write("Hvor mange penge vil du overføre? ");
@@ -239,10 +241,10 @@ namespace BankingSystem
                                 Console.ReadLine();
                                 MainMenu();
                             }
-
-                            break;
                         }
                     }
+
+                    break;
                 }
 
                 if (Bank.FindCustomer(email) == null)
